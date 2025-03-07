@@ -56,4 +56,6 @@ fi
 echo "Training in directory: $RUN_DIR"
 accelerate launch --num_processes=1 \
     "${SCRIPT_DIR}/run_vits_finetuning.py" \
-    "${SCRIPT_DIR}/finetune_mms_rmz.json" 2>&1 | tee -a "${RUN_DIR}/logs/training.log"
+    "${RUN_DIR}/finetune_mms_rmz.json" 2>&1 | tee -a "${RUN_DIR}/logs/training.log"
+
+    
