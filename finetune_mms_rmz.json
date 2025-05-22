@@ -9,6 +9,7 @@
     "text_column_name": "text",
     "train_split_name": "train",
     "eval_split_name": "train",
+    "override_speaker_embeddings": true,
 
     "max_duration_in_seconds": 20,
     "min_duration_in_seconds": 1.0,
@@ -19,9 +20,9 @@
     "do_train": true,
     "num_train_epochs": 2,
     "max_train_samples": null,
-    "gradient_accumulation_steps": 2,
+    "gradient_accumulation_steps": 1,
     "gradient_checkpointing": false,
-    "per_device_train_batch_size": 1,
+    "per_device_train_batch_size": 16,
     "learning_rate": 1e-5,
     "adam_beta1": 0.8,
     "adam_beta2": 0.99,
@@ -30,7 +31,7 @@
 
     "do_eval": true,
     "eval_steps": 500,
-    "per_device_eval_batch_size": 8,
+    "per_device_eval_batch_size": 16,
     "max_eval_samples": 25,
     "do_step_schedule_per_epoch": true,
 
