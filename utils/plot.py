@@ -11,11 +11,11 @@ def plot_spectrogram_to_numpy(spectrogram):
     global MATPLOTLIB_FLAG
     if not MATPLOTLIB_FLAG:
         import matplotlib
-
         matplotlib.use("Agg")
         MATPLOTLIB_FLAG = True
         mpl_logger = logging.getLogger("matplotlib")
         mpl_logger.setLevel(logging.WARNING)
+
     import matplotlib.pylab as plt
     import numpy as np
 
@@ -27,21 +27,22 @@ def plot_spectrogram_to_numpy(spectrogram):
     plt.tight_layout()
 
     fig.canvas.draw()
-    data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    data = np.frombuffer(fig.canvas.get_renderer().tostring_rgb(), dtype=np.uint8)
     data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
     plt.close()
     return data
+
 
 
 def plot_alignment_to_numpy(alignment, info=None):
     global MATPLOTLIB_FLAG
     if not MATPLOTLIB_FLAG:
         import matplotlib
-
         matplotlib.use("Agg")
         MATPLOTLIB_FLAG = True
         mpl_logger = logging.getLogger("matplotlib")
         mpl_logger.setLevel(logging.WARNING)
+
     import matplotlib.pylab as plt
     import numpy as np
 
@@ -56,7 +57,7 @@ def plot_alignment_to_numpy(alignment, info=None):
     plt.tight_layout()
 
     fig.canvas.draw()
-    data = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    data = np.frombuffer(fig.canvas.get_renderer().tostring_rgb(), dtype=np.uint8)
     data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
     plt.close()
     return data
