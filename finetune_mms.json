@@ -18,7 +18,7 @@
     "preprocessing_num_workers": 1,
 
     "do_train": true,
-    "num_train_epochs": 5,
+    "num_train_epochs": 3,
     "max_train_samples": null,
     "gradient_accumulation_steps": 1,
     "gradient_checkpointing": false,
@@ -30,7 +30,7 @@
     "group_by_length": false,
 
     "do_eval": true,
-    "eval_steps": 500,
+    "eval_steps": 50,
     "per_device_eval_batch_size": 16,
     "max_eval_samples": 25,
     "do_step_schedule_per_epoch": true,
