@@ -43,7 +43,7 @@ cd ..
 ## Model Setup
 
 ```bash
-# Create a directory for MMS-Marma
+# Create a directory for MMS-TTS model
 mkdir mms-tts
 cd mms-tts
 
