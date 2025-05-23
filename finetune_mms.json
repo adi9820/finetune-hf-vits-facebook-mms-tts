@@ -11,7 +11,7 @@
     "eval_split_name": "train",
     "override_speaker_embeddings": true,
 
-    "max_duration_in_seconds": 25,
+    "max_duration_in_seconds": 20,
     "min_duration_in_seconds": 1.0,
     "max_tokens_length": 500,
     "model_name_or_path": "Anjan9320/mms-tts-hin-finetuned",
