@@ -71,7 +71,7 @@ This repository includes a convenient script for training:
 ./finetune_rmz.sh new
 
 # Monitor training progress
-tail -f mms-rmz/finetuned/run_<timestamp>/logs/training.log
+tail -f mms/finetuned/run_<timestamp>/logs/training.log
 
 # Resume training from checkpoint if needed
 ./finetune_rmz.sh continue <path-to-checkpoint-dir>
@@ -111,20 +111,20 @@ After training, select the best checkpoint using our evaluation tools:
 ```bash
 # Analyze training logs
 cd analyze_train
-python analyze_log.py ../../mms-rmz/finetuned/run_<timestamp>/logs/training.log run_<timestamp>
+python analyze_log.py ../../mms/finetuned/run_<timestamp>/logs/training.log run_<timestamp>
 
 # Run inference on test sentences with specific checkpoints
 cd testing
 python batch-inference.py \
-  --base-model ../mms-rmz \
-  --checkpoint ../mms-rmz/finetuned/run_<timestamp>/checkpoint-<step>/ \
+  --base-model ../mms \
+  --checkpoint ../mms/finetuned/run_<timestamp>/checkpoint-<step>/ \
   --input-file testing/rapid-test.tsv \
   --output-dir testing/rapid-test-output
 
 # OR test multiple checkpoints at once
 python multi-checkpoint-inference.py \
   --input-file rapid-test.tsv \
-  --base-dir ../../mms-rmz/finetuned/run_<timestamp>/
+  --base-dir ../../mms/finetuned/run_<timestamp>/
 
 # Create evaluation sheets for subjective assessment
 python evaluation-sheet-maker.py \
