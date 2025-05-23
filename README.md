@@ -47,7 +47,7 @@ cd ..
 mkdir mms-tts
 cd mms-tts
 
-# Convert the model checkpoint with discriminator for your language
+# Convert the model checkpoint with discriminator for your language. Do it only once as this clones the model you want to finetune in your hf profile.
 python ../convert_original_discriminator_checkpoint.py \
   --language_code hin \
   --pytorch_dump_folder_path . \
