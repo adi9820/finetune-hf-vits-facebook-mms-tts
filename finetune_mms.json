@@ -9,39 +9,39 @@
     "text_column_name": "text",
     "train_split_name": "train",
     "eval_split_name": "train",
-    "override_speaker_embeddings": true,
+    "override_speaker_embeddings": true,    // Whether to override default speaker embeddings with new ones
 
     "max_duration_in_seconds": 20,
     "min_duration_in_seconds": 1.0,
     "max_tokens_length": 500,
     "model_name_or_path": "Anjan9320/mms-tts-hin-finetuned",
-    "preprocessing_num_workers": 1,
+    "preprocessing_num_workers": 1,    // Number of CPU workers for data preprocessing
 
     "do_train": true,
-    "num_train_epochs": 3,
-    "max_train_samples": null,
-    "gradient_accumulation_steps": 1,
-    "gradient_checkpointing": false,
-    "per_device_train_batch_size": 16,
-    "learning_rate": 1e-5,
-    "adam_beta1": 0.8,
-    "adam_beta2": 0.99,
-    "warmup_ratio": 0.02,
-    "group_by_length": false,
+    "num_train_epochs": 3,    // Number of epochs for training
+    "max_train_samples": null,    // Limits training to this number of samples
+    "gradient_accumulation_steps": 1,    // Accumulate gradients over this many steps before updating model weights
+    "gradient_checkpointing": false,    // Enables memory-efficient training by checkpointing intermediate activations
+    "per_device_train_batch_size": 16,    // Batch size for training per GPU/TPU core
+    "learning_rate": 1e-5,    // Initial learning rate
+    "adam_beta1": 0.8,    // Beta1 for Adam optimizer
+    "adam_beta2": 0.99,    // Beta2 for Adam optimizer
+    "warmup_ratio": 0.02,    // Fraction of total steps used for learning rate warmup
+    "group_by_length": false,    // Whether to group batches by sequence length for efficient training
 
-    "do_eval": true,
-    "eval_steps": 50,
-    "per_device_eval_batch_size": 16,
-    "max_eval_samples": 25,
-    "do_step_schedule_per_epoch": true,
+    "do_eval": true,    
+    "eval_steps": 50,    // Run evaluation every eval_steps steps
+    "per_device_eval_batch_size": 16,    // Batch size for evaluation
+    "max_eval_samples": 25,    // Limit the number of samples for evaluation
+    "do_step_schedule_per_epoch": true,    // If true, adjusts the scheduler steps to align with epochs
 
-    "weight_disc": 3,
-    "weight_fmaps": 1,
-    "weight_gen": 1,
-    "weight_kl": 1.5,
-    "weight_duration": 1,
-    "weight_mel": 35,
-    "fp16": true,
+    "weight_disc": 3,    // Weight for discriminator loss (GAN component)
+    "weight_fmaps": 1,    // Weight for feature matching loss
+    "weight_gen": 1,    // Weight for generator loss
+    "weight_kl": 1.5,    // Weight for KL-divergence loss (latent space regularization)
+    "weight_duration": 1,    // Weight for duration prediction loss
+    "weight_mel": 35,    // Weight for mel-spectrogram reconstruction loss
+    "fp16": true,    // Use 16-bit floating point (mixed precision) training for memory and speed efficiency
     "seed": 456,
 
     "report_to": ["tensorboard"],
@@ -50,7 +50,7 @@
     "logging_steps": 100,
     "log_level": "info",
     "logging_first_step": true,
-    "save_strategy": "steps",
-    "save_steps": 2500,
-    "save_total_limit": 10
+    "save_strategy": "steps",    // Saving strategy (steps = save every N steps)
+    "save_steps": 2500,    // Save a checkpoint every save_steps steps
+    "save_total_limit": 10    // Max number of checkpoints to keep
 }
