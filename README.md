@@ -18,7 +18,7 @@ The VITS checkpoints are released under the permissive [MIT License](https://ope
 1. Clone this repository and install common requirements.
 
 ```sh
-git clone https://github.com/translatorswb/finetune-hf-vits-marma.git
+git clone https://github.com/adi9820/finetune-hf-vits-marma
 cd finetune-hf-vits-marma
 pip install -r requirements.txt
 ```
@@ -49,9 +49,9 @@ cd mms-rmz
 
 # Convert the model checkpoint with discriminator for Marma (using Myanmar as closest relative)
 python ../convert_original_discriminator_checkpoint.py \
-  --language_code mya \
+  --language_code hin \
   --pytorch_dump_folder_path . \
-  --push_to_hub false
+  --push_to_hub <name of your model>
 
 # Create directory for finetuned models
 mkdir -p finetuned
@@ -89,7 +89,7 @@ The `finetune_mms_rmz.json` file contains important configuration parameters tha
 You can launch training directly with:
 
 ```sh
-accelerate launch run_vits_finetuning.py ./finetune_mms_rmz.json
+accelerate launch run_vits_finetuning.py ./finetune_mms.json
 ```
 
 ## Training Data Preparation
