@@ -2,7 +2,7 @@
     "project_name": "mms_tts_hin_finetuning",
     "push_to_hub": false,
     "overwrite_output_dir": true,
-    "output_dir": "/content/mms-rmz/finetuned",
+    "output_dir": "/content/fb-mms-tts/finetuned",
 
     "dataset_name": "Anjan9320/IndicTTS-Hindi-male",
     "audio_column_name": "audio",
