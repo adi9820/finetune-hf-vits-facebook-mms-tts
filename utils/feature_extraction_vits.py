@@ -106,6 +106,7 @@ class VitsFeatureExtractor(SequenceFeatureExtractor):
         )
 
         window = torch.hann_window(self.n_fft).to(waveform.device)
+        # Use complex STFT output
         stft = torch.stft(
             waveform,
             self.n_fft,
@@ -116,9 +117,12 @@ class VitsFeatureExtractor(SequenceFeatureExtractor):
             pad_mode="reflect",
             normalized=False,
             onesided=True,
-            return_complex=False,
+            return_complex=True,  # ✅ Updated
         )
-        magnitudes = torch.sqrt(stft.pow(2).sum(-1) + 1e-6)
+        
+        # Update how magnitudes are computed
+        magnitudes = torch.abs(stft)  # abs() is the magnitude for complex tensors
+
 
         mel_filters = torch.from_numpy(self.mel_filters).type(torch.float32).to(waveform.device)
         mel_spec = mel_filters.T @ magnitudes
