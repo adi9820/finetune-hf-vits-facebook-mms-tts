@@ -71,7 +71,7 @@ This repository includes a convenient script for training:
 ./finetune_rmz.sh new
 
 # Monitor training progress
-tail -f mms/finetuned/run_<timestamp>/logs/training.log
+tail -f mms-tts/finetuned/run_<timestamp>/logs/training.log
 
 # Resume training from checkpoint if needed
 ./finetune_rmz.sh continue <path-to-checkpoint-dir>
