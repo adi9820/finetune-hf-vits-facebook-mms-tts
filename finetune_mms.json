@@ -11,7 +11,7 @@
     "eval_split_name": "train",
     "override_speaker_embeddings": true,
 
-    "max_duration_in_seconds": 20,
+    "max_duration_in_seconds": 25,
     "min_duration_in_seconds": 1.0,
     "max_tokens_length": 500,
     "model_name_or_path": "Anjan9320/mms-tts-hin-finetuned",
@@ -24,13 +24,13 @@
     "gradient_checkpointing": false,
     "per_device_train_batch_size": 16,
     "learning_rate": 1e-5,
-    "adam_beta1": 0.8,
-    "adam_beta2": 0.99,
-    "warmup_ratio": 0.02,
+    "adam_beta1": 0.825,
+    "adam_beta2": 0.99225,
+    "warmup_ratio": 0.03,
     "group_by_length": false,
 
     "do_eval": true,    
-    "eval_steps": 50,
+    "eval_steps": 250,
     "per_device_eval_batch_size": 16,
     "max_eval_samples": 25,
     "do_step_schedule_per_epoch": true,
@@ -40,7 +40,7 @@
     "weight_gen": 1,
     "weight_kl": 1.5,
     "weight_duration": 1,
-    "weight_mel": 35,
+    "weight_mel": 37.5,
     "fp16": true,
     "seed": 456,
 
@@ -51,6 +51,6 @@
     "log_level": "info",
     "logging_first_step": true,
     "save_strategy": "steps",
-    "save_steps": 2500,
+    "save_steps": 1000,
     "save_total_limit": 10 
 }
