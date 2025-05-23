@@ -18,8 +18,8 @@ The VITS checkpoints are released under the permissive [MIT License](https://ope
 1. Clone this repository and install common requirements.
 
 ```sh
-git clone https://github.com/adi9820/finetune-hf-vits-marma
-cd finetune-hf-vits-marma
+git clone https://github.com/adi9820/finetune-hf-vits-facebook-mms-tts
+cd finetune-hf-vits-fb-tts
 pip install -r requirements.txt
 ```
 
