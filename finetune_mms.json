@@ -45,7 +45,7 @@
     "seed": 456,
 
     "report_to": ["tensorboard"],
-    "logging_dir": "/home/twbgmy/play/marma-tts/mms-rmz/finetuned/logs",
+    "logging_dir": "/content/fb-mms-tts/finetuned/logs",
     "logging_strategy": "steps",
     "logging_steps": 100,
     "log_level": "info",
