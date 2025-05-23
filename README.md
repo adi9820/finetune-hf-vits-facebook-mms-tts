@@ -51,7 +51,7 @@ cd mms-tts
 python ../convert_original_discriminator_checkpoint.py \
   --language_code hin \
   --pytorch_dump_folder_path . \
-  --push_to_hub <name of your model>
+  --push_to_hub <name your model>
 
 # Create directory for finetuned models
 mkdir -p finetuned
