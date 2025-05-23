@@ -19,7 +19,7 @@ The VITS checkpoints are released under the permissive [MIT License](https://ope
 
 ```sh
 git clone https://github.com/adi9820/finetune-hf-vits-facebook-mms-tts
-cd finetune-hf-vits-fb-tts
+cd finetune-hf-vits-facebook-mms-tts
 pip install -r requirements.txt
 ```
 
