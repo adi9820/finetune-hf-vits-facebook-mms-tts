@@ -44,10 +44,10 @@ cd ..
 
 ```bash
 # Create a directory for MMS-Marma
-mkdir mms-rmz
-cd mms-rmz
+mkdir mms-tts
+cd mms-tts
 
-# Convert the model checkpoint with discriminator for Marma (using Myanmar as closest relative)
+# Convert the model checkpoint with discriminator for your language
 python ../convert_original_discriminator_checkpoint.py \
   --language_code hin \
   --pytorch_dump_folder_path . \
@@ -79,7 +79,7 @@ tail -f mms-rmz/finetuned/run_<timestamp>/logs/training.log
 
 ### Using Config File (Alternative)
 
-The `finetune_mms_rmz.json` file contains important configuration parameters that can be modified to customize the training process:
+The `finetune_mms.json` file contains important configuration parameters that can be modified to customize the training process:
 
 - Dataset parameters (dataset_name, split names, column names)
 - Training hyperparameters (learning_rate, batch_size, etc.)
