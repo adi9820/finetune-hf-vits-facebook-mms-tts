@@ -144,15 +144,54 @@ You can use a finetuned model via the Text-to-Speech (TTS) [pipeline](https://hu
 Just replace the model path with your own model id or path to the model.
 
 ```python
-from transformers import pipeline
-import scipy
+import torch
+from transformers import VitsTokenizer, VitsModel, set_seed
+import soundfile as sf
+import time
 
-model_id = "CLEAR-Global/marmaspeak-tts-v1"  # replace with your model
-synthesiser = pipeline("text-to-speech", model_id) # add device=0 if you want to use a GPU
+model_id = "------"  # replace with your model
+# Load the Hindi TTS model and tokenizer
+tokenizer = VitsTokenizer.from_pretrained("model_id")
+model = VitsModel.from_pretrained("model_id")
 
-speech = synthesiser("ကိုတော် ဇာမာ နီရေလည်း၊")  # Marma text example
+# Select device (GPU if available)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
 
-scipy.io.wavfile.write("output.wav", rate=speech["sampling_rate"], data=speech["audio"][0])
+# Hindi text
+text = "आज का दिन बहुत ही खास है, क्योंकि हम एक नई तकनीक के माध्यम से यह जानने जा रहे हैं कि मशीनें किस प्रकार से मानव भाषा को समझ सकती हैं और उसे ध्वनि में परिवर्तित कर सकती हैं। यह तकनीक न केवल शिक्षा के क्षेत्र में (जैसे कि कक्षा ६ से १२ तक के छात्रों के लिए), बल्कि दैनिक जीवन के कई पहलुओं में भी उपयोगी हो सकती है, जैसे कि ८० लाख दृष्टिहीन व्यक्तियों की सहायता करना या २२ आधिकारिक भारतीय भाषाओं में संवाद करना।"
+
+# Tokenize and move inputs to device
+inputs = tokenizer(text, return_tensors="pt")
+inputs = {key: val.to(device) for key, val in inputs.items()}
+
+# Optional: Set seed for reproducibility
+set_seed(55)
+
+# Force GPU sync before starting timing
+if device.type == "cuda":
+    torch.cuda.synchronize()
+start_time = time.time()
+
+# Generate speech waveform
+with torch.no_grad():
+    outputs = model(**inputs)
+
+# Force GPU sync after model inference
+if device.type == "cuda":
+    torch.cuda.synchronize()
+end_time = time.time()
+
+mrt = end_time - start_time
+
+# Get waveform from output (move to CPU for saving)
+waveform = outputs.waveform[0].cpu()
+sampling_rate = model.config.sampling_rate
+
+# Save audio
+sf.write("facebook_mms_tts_hin.wav", waveform.numpy(), samplerate=sampling_rate)
+print("✅ Saved speech to 'output_hindi.wav'")
+print(f"🕒 Model response time: {mrt:.2f} seconds")
 ```
 
 ## Testing Scripts
