@@ -79,7 +79,7 @@ tail -f mms-tts/finetuned/run_<timestamp>/logs/training.log
 
 ### Using Config File (Alternative)
 
-The `finetune_mms.json` file contains important configuration parameters that can be modified to customize the training process:
+The `finetune_mms_tts.json` file contains important configuration parameters that can be modified to customize the training process:
 
 - Dataset parameters (dataset_name, split names, column names)
 - Training hyperparameters (learning_rate, batch_size, etc.)
@@ -203,3 +203,16 @@ This repository includes several testing scripts in the `testing/` directory:
 
 These scripts help with both objective and subjective evaluation of model outputs.
 
+## Training Hyperparameters in JSON
+
+| Parameter           | What it does?                                                                                                                 | 
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `"learning_rate"`   | Defines how quickly the model updates its weights                                                                             |
+| `"adam_beta1"`      | Controls first-order gradient in Adam optimizer (high value for better stability but makes model less responsive to new data) |
+| `"adam_beta2"`      | Controls second-order gradient in Adam (high value for better stability but makes model less responsive to new data)          |
+| `"weight_disc"`     | GAN adversarial loss weight (high value for making voice more like trainig voice but will decrease stability in trainig)      |
+| `"weight_fmaps"`    | Feature matching loss weight (high value for stability and realism but slower convergence)                                    |
+| `"weight_gen"`      | Generator loss weight (drives quality vs. discriminator)                                                                      |
+| `"weight_kl"`       | KL divergence loss weight (high value more stable voice but makes voice less expressive)                                      |
+| `"weight_duration"` | Duration prediction loss weight (high value better rhythm but makes voice less expressive)                                    |
+| `"weight_mel"`      | Mel-spectrogram loss weight (high value more accurate speech but makes voice robotic voice)                                   |
