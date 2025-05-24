@@ -140,8 +140,7 @@ The analysis will help identify the best performing checkpoint based on:
 
 ## Inference
 
-You can use a finetuned model via the Text-to-Speech (TTS) [pipeline](https://huggingface.co/docs/transformers/main_classes/pipelines#transformers.pipeline) in just a few lines of code.
-Just replace the model path with your own model id or path to the model.
+To use your finetuned model replace the model path with your own model id or path to the model.
 
 ```python
 import torch
