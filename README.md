@@ -62,22 +62,7 @@ cd ..
 
 There are two ways to run the finetuning script, both using command lines. Note that you only need one GPU to finetune VITS/MMS as the models are really lightweight (83M parameters).
 
-### Using the Training Script
-
-This repository includes a convenient script for training:
-
-```bash
-# Begin a new training session
-./finetune_rmz.sh new
-
-# Monitor training progress
-tail -f mms-tts/finetuned/run_<timestamp>/logs/training.log
-
-# Resume training from checkpoint if needed
-./finetune_rmz.sh continue <path-to-checkpoint-dir>
-```
-
-### Using Config File (Alternative)
+### Using Config File 
 
 The `finetune_mms_tts.json` file contains important configuration parameters that can be modified to customize the training process:
 
@@ -90,6 +75,21 @@ You can launch training directly with:
 
 ```sh
 accelerate launch run_vits_finetuning.py ./finetune_mms.json
+```
+
+### Using the Training Script (Alternative)
+
+This repository includes a convenient script for training:
+
+```bash
+# Begin a new training session
+./finetune_rmz.sh new
+
+# Monitor training progress
+tail -f mms-tts/finetuned/run_<timestamp>/logs/training.log
+
+# Resume training from checkpoint if needed
+./finetune_rmz.sh continue <path-to-checkpoint-dir>
 ```
 
 ## Training Data Preparation
