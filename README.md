@@ -41,6 +41,7 @@ cd ..
 ```
 
 ## Model Setup
+### Run only once
 
 ```bash
 # Create a directory for MMS-TTS model
