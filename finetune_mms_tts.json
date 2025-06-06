@@ -2,9 +2,9 @@
     "project_name": "mms_tts_hin_finetuning",
     "push_to_hub": false,
     "overwrite_output_dir": true,
-    "output_dir": "./fb-mms-tts/finetuned",
+    "output_dir": "./{username}",
 
-    "dataset_name": "Anjan9320/IndicTTS-Hindi-female",
+    "dataset_name": "Anjan9320/{username}",
     "audio_column_name": "audio",
     "text_column_name": "text",
     "train_split_name": "train",
