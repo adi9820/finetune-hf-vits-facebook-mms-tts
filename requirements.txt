@@ -10,7 +10,6 @@ Cython
 indic-transliteration
 silero-vad
 pydub
-json
 torch
 torchaudio
 soundfile
