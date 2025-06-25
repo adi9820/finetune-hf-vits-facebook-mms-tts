@@ -75,7 +75,7 @@ The `finetune_mms_tts.json` file contains important configuration parameters tha
 You can launch training directly with:
 
 ```sh
-accelerate launch run_vits_finetuning.py ./finetune_mms.json
+accelerate launch run_vits_finetuning.py ./finetune_mms_tts.json
 ```
 
 ### Using the Training Script (Alternative)
